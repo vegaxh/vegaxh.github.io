@@ -54,6 +54,6 @@ permalink: /link
 *需要展示你的网站，就在本页下面留言吧，也算是一种宣传方式。格式要求如下：*
 
 - 网站名称：vegaxh
-- 网站链接：http://www.vegaxh.com  
+- 网站链接：http://www.javaen.com  
 - 网站描述：诸葛 的个人博客，分享技术，努力赚钱  
 

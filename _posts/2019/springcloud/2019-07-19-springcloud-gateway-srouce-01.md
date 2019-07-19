@@ -1,0 +1,70 @@
+---
+layout: post
+title:  "SpringCloud-Gateway源码分析：环境搭建及遇到的坑"
+categories: SpringCloud
+tags:  SpringCloud Gateway
+---
+
+
+
+
+### 一、工具准备
++ 	JDK 8
+
++	MAVEN(>=3.5.x)
+
+-	IntelliJ IDEA
+
+<!--more-->
+
+### 二、Fork或导入官方源码
+
++	方法1: 首先有github帐户，从官方仓库[https://github.com/spring-cloud/spring-cloud-gateway.git](https://github.com/spring-cloud/spring-cloud-gateway.git) Fork一下。
+
++	方法2: 为了下载快速，在[国内码云](http://www.gitee.com)注册了帐户,导入官方仓库[https://github.com/spring-cloud/spring-cloud-gateway.git](https://github.com/spring-cloud/spring-cloud-gateway.git) ，如下图所示
+
+![](../../../../assets/images/2019/springcloud/sc-gateway-01-01.png)
+
+
+笔者采用了方法2
+
+为了更快下载依赖包，在mavaen安装路经下，配置/conf/settings.xml 阿里镜像，放在mirrors标签里
+
+```
+<mirror> 
+	<id>alimaven</id> 
+	<mirrorOf>central</mirrorOf>
+	<name>aliyun maven</name> 
+	<url>http://maven.aliyun.com/nexus/content/repositories/central/</url> 
+</mirror>
+
+```
+
+
+使用 IntelliJ IDEA 从自己的仓库拉取代码。
+
+
+在项目路经下执行 mvn package -Dmaven.test.skip=true 命令，结果报错
+
+```
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-checkstyle-plugin:
+3.0.0:check (no-http-checkstyle-validation) on project spring-cloud-gateway: Una
+ble to parse configuration of mojo org.apache.maven.plugins:maven-checkstyle-plu
+gin:3.0.0:check for parameter sourceDirectories: Cannot assign configuration ent
+ry 'sourceDirectories' with value './' of type java.lang.String to property of t
+ype java.util.List -> [Help 1]
+```
+
+这个问题找了很久，终于在baidu查到mavaen版本大于等于3.5，笔者本地mavaen版本是3.3.3，去官方下载mavaen最新版本3.6.1，终于执行成功了。
+
+
+![](../../../../assets/images/2019/springcloud/sc-gateway-01-02.png)
+
+
+
+
+### 三、参考资料
+
+[springcloud gateway  官方文档](https://github.com/spring-cloud/spring-cloud-gateway.git)
+
+[小强源码分析系列](https://blog.csdn.net/qq_41664448/article/details/88209148)
